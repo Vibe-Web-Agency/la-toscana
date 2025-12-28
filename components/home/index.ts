@@ -1,0 +1,7 @@
+export { default as Hero } from './Hero'
+export { default as About } from './About'
+export { default as Values } from './Values'
+export { default as MenuHighlights } from './MenuHighlights'
+export { default as Products } from './Products'
+export { default as Privatisation } from './Privatisation'
+export { default as CTA } from './CTA'
