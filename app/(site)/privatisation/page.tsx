@@ -1,5 +1,5 @@
 import React from 'react'
-import { PrivatisationHero, Services, EventTypes, ContactCTA } from '@/components/privatisation'
+import { PrivatisationHero, Services, EventTypes, QuoteForm } from '@/components/privatisation'
 
 export default function PrivatisationPage() {
   return (
@@ -7,7 +7,7 @@ export default function PrivatisationPage() {
       <PrivatisationHero />
       <Services />
       <EventTypes />
-      <ContactCTA />
+      <QuoteForm />
     </>
   )
 }

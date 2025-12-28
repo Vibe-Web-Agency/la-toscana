@@ -261,6 +261,7 @@ nav ul li a:hover::after {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
+  font-family: var(--font-primary);
 }
 
 .btn-primary:hover {
@@ -273,6 +274,7 @@ nav ul li a:hover::after {
   color: white;
   font-size: 0.95rem;
   font-weight: 500;
+
 }
 
 /* ===== BUTTONS ===== */
@@ -1934,4 +1936,254 @@ nav ul li a:hover::after {
 
 .reservation-success .btn {
   margin-top: 1rem;
+}
+
+/* ===== QUOTE FORM ===== */
+.quote-section {
+  padding: 6rem 0;
+  background: var(--bg-warm);
+}
+
+.quote-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.quote-info {
+  position: sticky;
+  top: 100px;
+}
+
+.quote-info h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.quote-info p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.quote-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quote-features li {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Quote Responsive */
+@media (max-width: 968px) {
+  .quote-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .quote-info {
+    position: static;
+  }
+}
+
+/* ===== CONTACT PAGE ===== */
+.contact-section {
+  padding: 6rem 0;
+  background: var(--bg);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info-card {
+  background: var(--bg-warm);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  position: sticky;
+  top: 100px;
+}
+
+.contact-info-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-2-dark));
+  border-radius: 50%;
+  padding: 0.7rem;
+}
+
+.contact-icon svg {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-text strong {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.contact-text span,
+.contact-text a {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.contact-text a:hover {
+  color: var(--accent-2);
+}
+
+/* Contact Services */
+.contact-services h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.service-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--bg-cream);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0.9rem;
+}
+
+.service-icon.takeaway {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.service-icon.reservation {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-1-dark));
+}
+
+.service-icon.privatisation {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-2-dark));
+}
+
+.service-icon svg {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.service-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.service-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.service-content p a {
+  color: var(--accent-2);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.service-content p a:hover {
+  text-decoration: underline;
+}
+
+.btn-service {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  color: var(--accent-2);
+  border: 2px solid var(--accent-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-service:hover {
+  background: var(--accent-2);
+  color: white;
+}
+
+/* Contact Responsive */
+@media (max-width: 968px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-info-card {
+    position: static;
+  }
+
+  .service-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-icon {
+    margin: 0 auto;
+  }
 }

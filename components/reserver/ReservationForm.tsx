@@ -145,7 +145,7 @@ export default function ReservationForm() {
                     date: reservationDate.toISOString(),
                     message: formData.message || null,
                     status: 'scheduled',
-                    attended: false
+                    attended: null
                 })
 
             if (insertError) throw insertError
