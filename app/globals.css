@@ -541,10 +541,6 @@ nav ul li a:hover::after {
   transition: var(--transition);
 }
 
-.about-image-container:hover .about-image {
-  transform: scale(1.02);
-}
-
 .about-image-accent {
   position: absolute;
   top: -20px;
@@ -1271,11 +1267,6 @@ nav ul li a:hover::after {
   border: 1px solid rgba(166, 61, 47, 0.05);
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-}
-
 .service-icon {
   width: 60px;
   height: 60px;
@@ -1320,17 +1311,13 @@ nav ul li a:hover::after {
 }
 
 .event-card {
-  background: var(--bg);
+  background: var(--bg-cream);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: all 0.4s ease;
 }
 
-.event-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
 
 .event-card-image {
   position: relative;
@@ -1343,10 +1330,6 @@ nav ul li a:hover::after {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
-}
-
-.event-card:hover .event-card-image img {
-  transform: scale(1.1);
 }
 
 .event-card-content {
@@ -1445,7 +1428,7 @@ nav ul li a:hover::after {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
   gap: 3rem;
   margin-bottom: 3rem;
 }
@@ -1499,6 +1482,40 @@ nav ul li a:hover::after {
 .footer-hours ul li {
   color: var(--text-secondary);
   font-size: 0.95rem;
+}
+
+/* Payment Methods */
+.footer-payment h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.payment-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-item svg,
+.payment-item img {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-2);
+  object-fit: contain;
+}
+
+.payment-item span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .footer-bottom {
@@ -1848,6 +1865,7 @@ nav ul li a:hover::after {
 
 .btn-submit {
   width: 100%;
+  justify-content: center;
   padding: 1.2rem;
   font-size: 1.1rem;
   margin-top: 1rem;
@@ -2082,6 +2100,7 @@ nav ul li a:hover::after {
 
 .service-card {
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
   background: var(--bg-cream);

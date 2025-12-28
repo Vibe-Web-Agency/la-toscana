@@ -13,7 +13,7 @@ const services = [
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
         ),
-        title: "Capacité jusqu'à 50 personnes",
+        title: "Capacité jusqu'à 70 personnes",
         description: "Notre salle peut accueillir jusqu'à 50 convives pour vos événements privés, dans une ambiance conviviale et chaleureuse."
     },
     {

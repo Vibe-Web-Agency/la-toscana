@@ -100,7 +100,7 @@ ${formData.message}
                                 <li>✓ Réponse sous 24h</li>
                                 <li>✓ Devis personnalisé</li>
                                 <li>✓ Menu sur-mesure</li>
-                                <li>✓ Jusqu'à 50 personnes</li>
+                                <li>✓ Jusqu'à 70 personnes</li>
                             </ul>
                         </div>
 
