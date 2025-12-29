@@ -13,7 +13,7 @@ export default function About() {
                     <AnimatedSection animation="fadeInLeft" className="about-image-wrapper">
                         <div className="about-image-container">
                             <Image
-                                src="/images/team.png"
+                                src="/images/salleprincipale.jpg"
                                 alt="L'équipe de La Toscana"
                                 width={500}
                                 height={400}

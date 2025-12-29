@@ -7,7 +7,7 @@ export default function Hero() {
         <section className="hero">
             <div className="hero-overlay"></div>
             <Image
-                src="/images/hero.png"
+                src="/images/IMG_6022.jpg"
                 alt="Restaurant La Toscana - Ambiance chaleureuse"
                 fill
                 className="hero-image"

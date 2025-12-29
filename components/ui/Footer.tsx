@@ -48,7 +48,7 @@ export default function Footer() {
                                 <a href="tel:0143468807">01 43 46 88 07</a>
                             </li>
                             <li>
-                                <a href="https://www.google.com/maps/place/La+Toscana/@48.8469275,2.3846835,17z" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.google.com/maps/place/La+Toscana/@48.8469275,2.3846835,17z/data=!3m1!5s0x47e6720db939ce67:0x919a789399cca53d!4m6!3m5!1s0x47e6720db8dbc763:0x3497ba2de7cf7463!8m2!3d48.8469444!4d2.3847222!16s%2Fg%2F11btlz96v3?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
                                     94 Boulevard Diderot<br />75012 Paris
                                 </a>
                             </li>

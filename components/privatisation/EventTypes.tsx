@@ -8,17 +8,17 @@ const events = [
     {
         title: "Anniversaires",
         description: "Célébrez votre anniversaire dans une ambiance unique avec vos proches.",
-        image: "/images/team.png"
+        image: "/images/IMG_5971.jpg"
     },
     {
         title: "Repas d'affaires",
         description: "Impressionnez vos clients et partenaires dans un cadre élégant.",
-        image: "/images/team.png"
+        image: "/images/IMG_6022.jpg"
     },
     {
         title: "Fêtes de famille",
         description: "Réunions de famille, baptêmes, communions... dans une atmosphère conviviale.",
-        image: "/images/team.png"
+        image: "/images/IMG_7761.png"
     }
 ]
 

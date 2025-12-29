@@ -14,7 +14,7 @@ const menuItems = [
         description: "Tomates fraîches, basilic, huile d'olive extra vierge sur pain croustillant"
     },
     {
-        image: "/images/plat.png",
+        image: "/images/burrata.jpg",
         alt: "Plat - Tagliatelle",
         tag: "Plat",
         title: "Tagliatelle alla Bolognese",
