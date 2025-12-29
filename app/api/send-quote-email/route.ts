@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
         // Email de confirmation au client
         await resend.emails.send({
-            from: 'La Toscana <noreply@vibewebagency.fr>',
+            from: 'La Toscana <noreply@latoscanaparis.fr>',
             to: customerEmail,
             subject: `Demande de devis reçue - La Toscana`,
             html: quoteConfirmationTemplate({
