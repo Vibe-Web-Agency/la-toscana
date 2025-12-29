@@ -150,6 +150,26 @@ export default function ReservationForm() {
 
             if (insertError) throw insertError
 
+            // Envoyer les emails de confirmation
+            try {
+                await fetch('/api/send-reservation-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customerName: formData.customer_name,
+                        customerEmail: formData.customer_mail,
+                        customerPhone: formData.customer_phone,
+                        date: formData.date,
+                        time: formData.time,
+                        guests: formData.guests,
+                        message: formData.message
+                    })
+                })
+            } catch (emailError) {
+                console.error('Erreur envoi email:', emailError)
+                // On ne bloque pas la réservation si l'email échoue
+            }
+
             setSuccess(true)
             setFormData({
                 customer_name: '',

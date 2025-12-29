@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { menu, MenuItem } from "@/data/menu";
 
 // Grouper les catégories par type
@@ -18,6 +18,19 @@ const allCategories = Object.values(categoryGroups).flat();
 
 export default function MenuPage() {
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
+  const categoriesRef = useRef<HTMLDivElement>(null);
+
+  const handleFilterClick = (group: string | null) => {
+    setActiveGroup(group);
+    // Scroll vers le haut des catégories avec offset pour navbar + menu-nav
+    setTimeout(() => {
+      if (categoriesRef.current) {
+        const offset = 160; // navbar (84px) + menu-nav (~76px)
+        const top = categoriesRef.current.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 50);
+  };
 
   // Grouper les items par catégorie
   const menuByCategory = useMemo(() => {
@@ -70,7 +83,7 @@ export default function MenuPage() {
           <div className="menu-nav">
             <button
               className={`menu-nav-btn ${activeGroup === null ? "active" : ""}`}
-              onClick={() => setActiveGroup(null)}
+              onClick={() => handleFilterClick(null)}
             >
               Tout voir
             </button>
@@ -78,7 +91,7 @@ export default function MenuPage() {
               <button
                 key={group}
                 className={`menu-nav-btn ${activeGroup === group ? "active" : ""}`}
-                onClick={() => setActiveGroup(group)}
+                onClick={() => handleFilterClick(group)}
               >
                 {group}
               </button>
@@ -86,7 +99,7 @@ export default function MenuPage() {
           </div>
 
           {/* Catégories et items */}
-          <div className="menu-categories">
+          <div className="menu-categories" ref={categoriesRef}>
             {visibleCategories.map((category) => {
               const items = menuByCategory[category];
               if (!items || items.length === 0) return null;
