@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
 
         // Email de notification à l'admin
         await resend.emails.send({
-            from: 'La Toscana <noreply@vibewebagency.fr>',
+            from: 'La Toscana <noreply@latoscanaparis.fr>',
             to: adminEmail,
             subject: `🍝 Nouvelle réservation - ${customerName} (${formattedDate})`,
             html: reservationAdminTemplate({
