@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { galleryAssets, Asset } from "@/data/assetsData";
+import GalerieHero from "@/components/galerie/Hero";
 
-type FilterCategory = "all" | "plat" | "restaurant" | "ambiance" | "equipe";
+type FilterCategory = "all" | "plat" | "restaurant" | "ambiance";
 
 export default function Galerie() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
@@ -15,7 +16,6 @@ export default function Galerie() {
     { label: "Nos Plats", value: "plat" },
     { label: "Le Restaurant", value: "restaurant" },
     { label: "Ambiance", value: "ambiance" },
-    { label: "Notre Équipe", value: "equipe" },
   ];
 
   const filteredAssets =
@@ -28,17 +28,7 @@ export default function Galerie() {
   return (
     <>
       {/* Hero Section */}
-      <section className="galerie-hero">
-        <div className="galerie-hero-overlay"></div>
-        <div className="galerie-hero-content">
-          <span className="section-badge hero-animate">Notre Galerie</span>
-          <h1 className="hero-animate">Découvrez La Toscana</h1>
-          <p className="galerie-hero-subtitle hero-animate">
-            Plongez dans l&apos;univers chaleureux de notre restaurant à travers
-            nos photos et vidéos
-          </p>
-        </div>
-      </section>
+      <GalerieHero />
 
       {/* Gallery Section */}
       <section className="galerie-section">

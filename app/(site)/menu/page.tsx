@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useRef } from "react";
 import { menu, MenuItem } from "@/data/menu";
+import MenuHero from "@/components/menu/Hero";
 
 // Grouper les catégories par type
 const categoryGroups = {
@@ -64,17 +65,7 @@ export default function MenuPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="menu-hero">
-        <div className="menu-hero-overlay"></div>
-        <div className="menu-hero-content">
-          <span className="section-badge hero-animate">La Carte</span>
-          <h1 className="hero-animate">Notre Menu</h1>
-          <p className="menu-hero-subtitle hero-animate">
-            Découvrez notre sélection de spécialités franco-italiennes,
-            préparées avec passion et des produits frais
-          </p>
-        </div>
-      </section>
+      <MenuHero />
 
       {/* Menu Section */}
       <section className="menu-page-section">

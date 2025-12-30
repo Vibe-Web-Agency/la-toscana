@@ -17,7 +17,7 @@ export default function Privatisation() {
                             <h2>Privatisez La Toscana</h2>
                             <div className="privatisation-image-container">
                                 <Image
-                                    src="/images/team.png"
+                                    src="/images/facade.jpg"
                                     alt="Privatisation La Toscana"
                                     width={550}
                                     height={450}

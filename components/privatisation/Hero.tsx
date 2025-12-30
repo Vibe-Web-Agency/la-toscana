@@ -6,7 +6,7 @@ export default function PrivatisationHero() {
         <section className="page-hero">
             <div className="page-hero-overlay"></div>
             <Image
-                src="/images/hero.png"
+                src="/images/IMG_6022.jpg"
                 alt="Privatisation La Toscana"
                 fill
                 className="page-hero-image"

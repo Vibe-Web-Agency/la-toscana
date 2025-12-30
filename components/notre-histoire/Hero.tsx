@@ -6,7 +6,7 @@ export default function NotreHistoireHero() {
         <section className="page-hero">
             <div className="page-hero-overlay"></div>
             <Image
-                src="/images/team.png"
+                src="/images/facade.jpg"
                 alt="L'équipe La Toscana"
                 fill
                 className="page-hero-image"

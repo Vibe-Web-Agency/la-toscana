@@ -6,7 +6,7 @@ export default function ContactHero() {
         <section className="page-hero">
             <div className="page-hero-overlay"></div>
             <Image
-                src="/images/hero.png"
+                src="/images/facade.jpg"
                 alt="Contactez La Toscana"
                 fill
                 className="page-hero-image"

@@ -18,7 +18,7 @@ const events = [
     {
         title: "Fêtes de famille",
         description: "Réunions de famille, baptêmes, communions... dans une atmosphère conviviale.",
-        image: "/images/IMG_7761.png"
+        image: "/images/IMG_7761.PNG"
     }
 ]
 
@@ -38,8 +38,9 @@ export default function EventTypes() {
                                     <Image
                                         src={event.image}
                                         alt={event.title}
-                                        width={400}
-                                        height={300}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        style={{ objectFit: 'cover' }}
                                     />
                                 </div>
                                 <div className="event-card-content">

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '@/public/images/logo.png'
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,7 +26,7 @@ export default function Navbar() {
         <>
             <nav>
                 <div className="logo">
-                    <Link href="/"><Image src={logo} alt="Logo" width={70} height={70} /></Link>
+                    <Link href="/"><Image src="/images/logo.png" alt="Logo La Toscana" width={70} height={70} /></Link>
                 </div>
 
                 {/* Desktop Menu */}

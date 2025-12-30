@@ -12,7 +12,7 @@ export default function Story() {
                     <AnimatedSection animation="fadeInLeft">
                         <div className="story-image-container">
                             <Image
-                                src="/images/hero.png"
+                                src="/images/salleprincipale.jpg"
                                 alt="Restaurant La Toscana"
                                 width={550}
                                 height={450}

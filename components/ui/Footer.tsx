@@ -55,6 +55,16 @@ export default function Footer() {
                         </ul>
                     </div>
 
+                    {/* Informations légales */}
+                    <div className="footer-legal">
+                        <h4>Informations</h4>
+                        <ul>
+                            <li><Link href="/blog">Blog</Link></li>
+                            <li><Link href="/cgu">CGU</Link></li>
+                            <li><Link href="/mentions-legales">Mentions Légales</Link></li>
+                        </ul>
+                    </div>
+
                     {/* Moyens de paiement */}
                     <div className="footer-payment">
                         <h4>Moyens de paiement</h4>

@@ -1357,6 +1357,7 @@ nav ul li a:hover::after {
 .page-hero-image {
   object-fit: cover;
   object-position: center;
+  filter: blur(5px);
 }
 
 .page-hero-content {
@@ -1619,8 +1620,8 @@ nav ul li a:hover::after {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
-  gap: 3rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
@@ -1638,7 +1639,8 @@ nav ul li a:hover::after {
 
 .footer-nav h4,
 .footer-hours h4,
-.footer-contact h4 {
+.footer-contact h4,
+.footer-legal h4 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   color: var(--text-color);
@@ -1647,18 +1649,21 @@ nav ul li a:hover::after {
 
 .footer-nav ul,
 .footer-hours ul,
-.footer-contact ul {
+.footer-contact ul,
+.footer-legal ul {
   list-style: none;
 }
 
 .footer-nav ul li,
 .footer-hours ul li,
-.footer-contact ul li {
+.footer-contact ul li,
+.footer-legal ul li {
   margin-bottom: 0.5rem;
 }
 
 .footer-nav ul li a,
-.footer-contact ul li a {
+.footer-contact ul li a,
+.footer-legal ul li a {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
@@ -1666,7 +1671,8 @@ nav ul li a:hover::after {
 }
 
 .footer-nav ul li a:hover,
-.footer-contact ul li a:hover {
+.footer-contact ul li a:hover,
+.footer-legal ul li a:hover {
   color: var(--accent-2);
 }
 
@@ -2219,12 +2225,16 @@ nav ul li a:hover::after {
   align-items: start;
 }
 
+.contact-grid>*:first-child {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
 .contact-info-card {
   background: var(--bg-warm);
   padding: 2.5rem;
   border-radius: var(--radius-lg);
-  position: sticky;
-  top: 100px;
 }
 
 .contact-info-card h2 {
@@ -2383,6 +2393,10 @@ nav ul li a:hover::after {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .contact-grid>*:first-child {
+    position: static;
   }
 
   .contact-info-card {
@@ -3021,5 +3035,143 @@ nav ul li a:hover::after {
   .menu-category-block {
     padding: 1rem;
     border-radius: var(--radius-md);
+  }
+}
+
+/* ===== LEGAL PAGES ===== */
+.legal-page {
+  padding-top: 120px;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.legal-page h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.legal-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(166, 61, 47, 0.1);
+}
+
+.legal-section:last-of-type {
+  border-bottom: none;
+}
+
+.legal-section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--accent-2);
+  margin-bottom: 1rem;
+}
+
+.legal-section p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.legal-section p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.legal-section ul li {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.legal-section a {
+  color: var(--accent-2);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.legal-section a:hover {
+  text-decoration: underline;
+}
+
+.legal-date {
+  font-style: italic;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Blog Coming Soon */
+.blog-coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.coming-soon-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 3rem;
+  background: var(--bg-cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.coming-soon-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.coming-soon-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.coming-soon-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Legal Pages Responsive */
+@media (max-width: 768px) {
+  .legal-page {
+    padding-top: 100px;
+    padding-bottom: 4rem;
+  }
+
+  .legal-page h1 {
+    margin-bottom: 2rem;
+  }
+
+  .legal-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .coming-soon-content {
+    padding: 2rem;
+    margin: 0 1rem;
   }
 }
