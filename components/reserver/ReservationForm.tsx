@@ -138,7 +138,7 @@ export default function ReservationForm() {
             const { error: insertError } = await supabase
                 .from('reservations')
                 .insert({
-                    user_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
+                    business_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
                     customer_name: formData.customer_name,
                     customer_phone: formData.customer_phone,
                     customer_mail: formData.customer_mail,

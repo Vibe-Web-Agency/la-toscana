@@ -37,6 +37,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TWGFNXHL');`,
           }}
         />
+        {/* VWA Tracker */}
+        <script
+          defer
+          src={`https://tracker-production-9a75.up.railway.app/track.js?id=${process.env.NEXT_PUBLIC_BUSINESS_ID}`}
+        />
         {/* Google Analytics (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ296N77R" />
         <script

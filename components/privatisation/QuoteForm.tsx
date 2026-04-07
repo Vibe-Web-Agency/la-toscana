@@ -56,7 +56,7 @@ ${formData.message}
             const { error: insertError } = await supabase
                 .from('quotes')
                 .insert({
-                    user_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
+                    business_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
                     customer_name: formData.customer_name,
                     customer_email: formData.customer_email,
                     customer_phone: formData.customer_phone,
