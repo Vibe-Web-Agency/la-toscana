@@ -143,6 +143,7 @@ export default function ReservationForm() {
                     customer_phone: formData.customer_phone,
                     customer_mail: formData.customer_mail,
                     date: reservationDate.toISOString(),
+                    guests: formData.guests,
                     message: formData.message || null,
                     status: 'scheduled',
                     attended: null
