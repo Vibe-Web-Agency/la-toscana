@@ -14,9 +14,49 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://latoscanaparis.fr";
+const OG_IMAGE = `${BASE_URL}/images/salleprincipale.jpg`;
+
 export const metadata: Metadata = {
-  title: "La Toscana",
-  description: "Pizzeria et restaurant franco-italien à Paris",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    template: "%s | La Toscana",
+    default: "La Toscana | Restaurant Franco-Italien Paris 12ème",
+  },
+  description:
+    "Restaurant franco-italien au cœur du 12ème arrondissement de Paris. Pizzas, pâtes fraîches et spécialités italiennes dans une ambiance chaleureuse. Ouvert 7j/7.",
+  keywords: [
+    "restaurant paris 12",
+    "restaurant italien paris",
+    "pizzeria paris",
+    "restaurant franco-italien",
+    "La Toscana",
+    "boulevard diderot",
+    "pâtes fraîches paris",
+    "pizza paris 12ème",
+  ],
+  authors: [{ name: "La Toscana" }],
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "La Toscana",
+    url: BASE_URL,
+    title: "La Toscana | Restaurant Franco-Italien Paris 12ème",
+    description:
+      "Restaurant franco-italien au 94 boulevard Diderot, Paris 12ème. Pizzas, pâtes et cuisine italienne authentique. Ouvert 7j/7.",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "La Toscana - Restaurant franco-italien Paris 12ème" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "La Toscana | Restaurant Franco-Italien Paris 12ème",
+    description: "Restaurant franco-italien au cœur du 12ème arrondissement. Pizzas, pâtes, cuisine italienne authentique.",
+    images: [OG_IMAGE],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 export default function RootLayout({
