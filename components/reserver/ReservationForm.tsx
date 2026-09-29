@@ -1,38 +1,16 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import { CRENEAUX, MAX_PAR_CRENEAU } from '@/lib/creneaux'
 
-// Générer les créneaux horaires
-const generateTimeSlots = () => {
-    const slots: string[] = []
-
-    // Midi : 11h30 à 14h30
-    for (let hour = 11; hour <= 14; hour++) {
-        for (let min = 0; min < 60; min += 15) {
-            if (hour === 11 && min < 30) continue
-            if (hour === 14 && min > 30) continue
-            const time = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`
-            slots.push(time)
-        }
-    }
-
-    // Soir : 18h30 à 23h00
-    for (let hour = 18; hour <= 23; hour++) {
-        for (let min = 0; min < 60; min += 15) {
-            if (hour === 18 && min < 30) continue
-            if (hour === 23 && min > 0) continue
-            const time = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`
-            slots.push(time)
-        }
-    }
-
-    return slots
-}
-
-const TIME_SLOTS = generateTimeSlots()
-const MAX_RESERVATIONS_PER_SLOT = 20
+/*
+ * Les créneaux et la capacité vivent dans `lib/creneaux.ts` : le SERVEUR
+ * doit appliquer exactement les mêmes règles. Deux copies finiraient par
+ * diverger, et c'est celle du serveur qui compte.
+ */
+const TIME_SLOTS = CRENEAUX
+const MAX_RESERVATIONS_PER_SLOT = MAX_PAR_CRENEAU
 
 interface FormData {
     customer_name: string
@@ -72,38 +50,23 @@ export default function ReservationForm() {
         }
     }, [formData.date])
 
+    /*
+     * Les disponibilités viennent d'une route d'API qui ne renvoie que des
+     * COMPTAGES.
+     *
+     * Avant, ce composant lisait la table `reservations` directement depuis
+     * le navigateur, avec une clé Supabase embarquée dans la page : n'importe
+     * quel visiteur pouvait donc lire les noms, téléphones et e-mails de
+     * toutes les réservations du projet. Et la requête n'avait même pas de
+     * filtre sur le commerce, donc Toscana comptait les réservations des
+     * autres restaurants comme les siennes.
+     */
     const loadAvailableSlots = async (date: string) => {
         try {
-            const startOfDay = new Date(date)
-            startOfDay.setHours(0, 0, 0, 0)
-
-            const endOfDay = new Date(date)
-            endOfDay.setHours(23, 59, 59, 999)
-
-            const { data, error } = await supabase
-                .from('reservations')
-                .select('date')
-                .gte('date', startOfDay.toISOString())
-                .lte('date', endOfDay.toISOString())
-                .eq('status', 'scheduled')
-
-            if (error) throw error
-
-            // Compter les réservations par créneau
-            const slotCounts: { [key: string]: number } = {}
-            TIME_SLOTS.forEach(slot => {
-                slotCounts[slot] = 0
-            })
-
-            data?.forEach(reservation => {
-                const resDate = new Date(reservation.date)
-                const time = `${resDate.getHours().toString().padStart(2, '0')}:${resDate.getMinutes().toString().padStart(2, '0')}`
-                if (slotCounts[time] !== undefined) {
-                    slotCounts[time]++
-                }
-            })
-
-            setAvailableSlots(slotCounts)
+            const reponse = await fetch(`/api/reservations/disponibilites?date=${date}`)
+            if (!reponse.ok) throw new Error('Lecture des créneaux impossible')
+            const { creneaux } = await reponse.json()
+            setAvailableSlots(creneaux)
         } catch (err) {
             console.error('Erreur lors du chargement des créneaux:', err)
         }
@@ -124,32 +87,37 @@ export default function ReservationForm() {
         setSuccess(false)
 
         try {
-            // Créer la date avec l'heure
-            const [hours, minutes] = formData.time.split(':').map(Number)
-            const reservationDate = new Date(formData.date)
-            reservationDate.setHours(hours, minutes, 0, 0)
-
-            // Vérifier la disponibilité
+            /*
+             * Ce contrôle-ci ne sert qu'à éviter un aller-retour inutile :
+             * il se contourne depuis la console du navigateur. C'est le
+             * serveur qui revérifie la capacité au moment d'écrire, et qui
+             * choisit le `business_id` — le navigateur n'a plus voix au
+             * chapitre sur ni l'un ni l'autre.
+             */
             if (availableSlots[formData.time] >= MAX_RESERVATIONS_PER_SLOT) {
                 throw new Error('Ce créneau est complet. Veuillez en choisir un autre.')
             }
 
-            // Insérer la réservation
-            const { error: insertError } = await supabase
-                .from('reservations')
-                .insert({
-                    business_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
+            const reponse = await fetch('/api/reservations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     customer_name: formData.customer_name,
                     customer_phone: formData.customer_phone,
                     customer_mail: formData.customer_mail,
-                    date: reservationDate.toISOString(),
+                    // La date et l'heure partent séparément : c'est le
+                    // serveur qui les assemble dans le fuseau du restaurant.
+                    date: formData.date,
+                    time: formData.time,
                     guests: formData.guests,
-                    message: formData.message || null,
-                    status: 'scheduled',
-                    attended: null
+                    message: formData.message || null
                 })
+            })
 
-            if (insertError) throw insertError
+            if (!reponse.ok) {
+                const { erreur } = await reponse.json().catch(() => ({}))
+                throw new Error(erreur || "Nous n'avons pas pu enregistrer la réservation.")
+            }
 
             // Envoyer les emails de confirmation
             try {
