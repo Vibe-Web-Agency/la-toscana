@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import { supabase } from '@/lib/supabase'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 
 interface FormData {
@@ -53,19 +52,24 @@ Message:
 ${formData.message}
             `.trim()
 
-            const { error: insertError } = await supabase
-                .from('quotes')
-                .insert({
-                    business_id: process.env.NEXT_PUBLIC_BUSINESS_ID,
+            // Le `business_id` n'est plus envoyé par le navigateur : le
+            // serveur le tient de son environnement.
+            const reponse = await fetch('/api/devis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     customer_name: formData.customer_name,
                     customer_email: formData.customer_email,
                     customer_phone: formData.customer_phone,
                     message: fullMessage,
-                    service: 'Privatisation - ' + formData.event_type,
-                    status: 'pending'
+                    service: 'Privatisation - ' + formData.event_type
                 })
+            })
 
-            if (insertError) throw insertError
+            if (!reponse.ok) {
+                const { erreur } = await reponse.json().catch(() => ({}))
+                throw new Error(erreur || "Nous n'avons pas pu enregistrer votre demande.")
+            }
 
             // Envoyer les emails de confirmation
             try {
